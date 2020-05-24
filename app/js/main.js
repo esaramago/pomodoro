@@ -3,8 +3,6 @@ const Pomodoro = {
     mobileSelect: null,
     noSleep: new NoSleep(), // https://davidwalsh.name/wake-lock-shim
     interval: null,
-    startMinute: 5,
-    startSecond: 0,
 
     init() {
         this.renderMobileSelect();
@@ -12,15 +10,28 @@ const Pomodoro = {
         this.setNoSleep();
     },
 
+    getStartMinute() {
+        return localStorage.getItem('startMinute') || 5;
+    },
+
+    getStartSecond() {
+        return localStorage.getItem('startSecond') || 0;
+    },
+
     renderMobileSelect() {
 
+        // https://github.com/onlyhom/mobileSelect.js
         this.mobileSelect = new MobileSelect({
             trigger: '.js-mobile-select',
-            position: [this.startMinute, this.startSecond],
+            position: [this.getStartMinute(), this.getStartSecond()],
             wheels: [
                 { data: minutesArr },
                 { data: secondsArr }
-            ]
+            ],
+            transitionEnd(indexArr, data) {
+                localStorage.setItem('startMinute', indexArr[0]);
+                localStorage.setItem('startSecond', indexArr[1]);
+            }
         });
     },
 
@@ -58,8 +69,8 @@ const Pomodoro = {
         clearInterval(this.interval);
 
         // set initial time
-        this.mobileSelect.locatePosition(0, this.startMinute);
-        this.mobileSelect.locatePosition(1, this.startSecond);~
+        this.mobileSelect.locatePosition(0, this.getStartMinute());
+        this.mobileSelect.locatePosition(1, this.getStartSecond());~
 
         this.updateButtons('reset');
 
