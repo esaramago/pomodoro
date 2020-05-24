@@ -1,6 +1,6 @@
 // Credits: https://airhorner.com
 
-const version = "1.0.0";
+const version = "1.0.2";
 const cacheName = `thepomodorotimer-${version}`;
 self.addEventListener('install', e => {
     e.waitUntil(
