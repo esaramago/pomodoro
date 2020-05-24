@@ -72,14 +72,8 @@
 			_this.setCurDistance(_this.initPosition);
 
 
-			//按钮监听
 
-
-			_this.trigger.addEventListener('click', function () {
-				_this.show();
-			});
-
-			_this.fixRowStyle(); //修正列数
+			_this.fixRowStyle();
 		},
 
 		checkIsPC: function () {
@@ -412,7 +406,7 @@
 		},
 
 		getValue: function () {
-			return this.curValue;
+			return this.getCurValue();
 		},
 
 		calcDistance: function (index) {

@@ -1,6 +1,5 @@
 ﻿:root {
     --font: 'Georgia', serif;
-
     --color-main: rgb(141 42 42);
 }
 
@@ -11,6 +10,8 @@ body,
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     font-family: var(--font);
     background-color: tomato;
@@ -37,13 +38,23 @@ body {
     height: 60px;
     padding: 0 30px;
     border: 4px solid var(--color-main);
-    /* background-color: rgb(255 240 240 / .5); */
     background-color: #FFF;
-    /* color: #FFF; */
     border-radius: 10px;
     color: var(--color-main);
     font-weight: 600;
     font-size: 30px;
-    /* text-transform: uppercase; */
     font-family: var(--font);
+}
+.c-button--secondary {
+    background-color: #9e8484;
+    color: #FFF;
+}
+
+.c-credits {
+    padding-bottom: 5px;
+    text-align: center;
+    opacity: .7;
+}
+.c-credits a:visited {
+    color: #FFF;
 }
